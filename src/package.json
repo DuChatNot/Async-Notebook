@@ -1,0 +1,16 @@
+{
+  "name": "async",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "callback": "node callbacks/challenge.js"
+  },
+  "keywords": [
+    "JavaScript"
+  ],
+  "author": "DuChat cpantoja022@gmial.com",
+  "license": "MIT",
+  "type":"module"
+}
+
