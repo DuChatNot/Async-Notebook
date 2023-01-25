@@ -18,12 +18,12 @@ import fetch from 'node-fetch'; //Trae el módulo fetch para que se pueda usar (
 const API2 = 'https://api.escuelajs.co/api/v1'; //Nombrada API2 para no causar interferencia con la variable anterior (API)
 
 function fetchData(urlApi){
-    return fetch(urlApi);
+    return fetch(urlApi); //Regresa el valor a la función, es decir, la función fetchData adopta el valor de fetch(urlApi)
 }    
 
 fetchData(`${API2}/products`) //Primer petición... Entra a la URL dada y "roba" toda la información
-    .then(response => response.json()) //Dicha información guardala en la variable "response" y pasala a formato .json (para poder leerla)
-    .then(prod => { //Pasa la variable "response" a una variable llamada "prod"
+    .then(response => response.json()) //Dicha información guardala en la variable "response" y pasala a formato .json (lo cual es otra promesa, por eso es necesario concatenar otro .then)
+    .then(prod => { //Cuando se cumpla la promesa de conversión a .json, pasa el valor a una variable llamada "prod"
         console.log(prod); //Imprime prod (En este momento se despliega una lista gigante de productos, los cuales estan en API2/products [navegador WEB])
         return fetchData(`${API2}/products/${prod[0].id}`) //Segunda petición... Entra a API2/products/ID del primer elemento de la lista gigante de productos (el producto al ser un objeto, cuenta con una propiedad llamada ID, es por eso que se accede por medio de .id)
     })
